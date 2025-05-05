@@ -43,9 +43,7 @@ MazeBot 3D es una aplicación web educativa que permite al usuario visualizar la
 
 ## Diagrama de Flujo del Sistema
 
-## 🔄 Diagrama de Flujo del Sistema
-
-![Diagrama de Flujo](./Docs/flujo.png)
+![Diagrama de Flujo del Sistema](./flujo.png)
 
 
 ---

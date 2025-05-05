@@ -163,3 +163,48 @@ button:hover {
     transform: scale(1.05); /* Ligeramente agrandado */
     box-shadow: 0 6px 10px rgba(0,0,0,0.4);
 }
+
+/* Estilos para el modal */
+.swal2-popup {
+    border-radius: 10px;
+    padding: 20px;
+    font-family: 'Montserrat', sans-serif;  /* Mantener la misma fuente */
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos de la tabla */
+.swal2-popup table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    text-align: left;
+}
+
+.swal2-popup th, .swal2-popup td {
+    padding: 10px;
+    border: 1px solid #ddd;  /* Bordes finos */
+    font-size: 14px;
+}
+
+/* Fondo del encabezado */
+.swal2-popup th {
+    background-color: #f4f4f4;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Estilo de las filas alternadas */
+.swal2-popup tr:nth-child(even) {
+    background-color: #f9f9f9;  /* Fila de color suave */
+}
+
+/* Estilo de las celdas de la tabla */
+.swal2-popup td {
+    color: #555;
+}
+
+/* Estilo cuando pasas el ratón sobre una fila */
+.swal2-popup tr:hover {
+    background-color: #f1f1f1;
+}

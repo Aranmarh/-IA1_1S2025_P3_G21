@@ -66,6 +66,37 @@ class MazeBot {
         });
 
 
+        document.getElementById('home').addEventListener('click', () => {
+            Swal.fire({
+                title: 'Acerca de',
+                html: `
+                    <table>
+                        <tr>
+                            <th>Carnet</th>
+                            <th>Nombre</th>
+                        </tr>
+                        <tr>
+                            <td>201408507</td>
+                            <td>Jose Martinez</td>
+                        </tr>
+                        <tr>
+                            <td>202002940</td>
+                            <td>Sebastian Godoy</td>
+                        </tr>
+                        <tr>
+                            <td>201019694</td>
+                            <td>Henderson Baten</td>
+                        </tr>
+                    </table>
+                `,
+                confirmButtonText: 'Cerrar',
+                width: '600px',
+                padding: '20px',
+                background: '#f4f4f9'
+            });
+        });
+
+        
         document.getElementById('a').addEventListener('click', () => {
             this.algorithm = 'astar';
             if (this.maze) {

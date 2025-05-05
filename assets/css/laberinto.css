@@ -1,0 +1,165 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(to bottom, #f7e7c1, #e0c18d); /* Fondo tipo pergamino antiguo */
+    font-family: 'Cinzel', serif; /* Fuente clásica de aventura (puedes usar otra similar) */
+    color: #5C4033; /* Marrón oscuro (color de escritura antigua) */
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-size: cover;
+}
+
+h1, h2, h3, p {
+    text-align: center;
+    margin: 20px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.container {
+    padding: 40px;
+    max-width: 100%;
+    margin: 0 auto;
+    background: rgba(255, 248, 220, 0.8); /* Un fondo clarito para el contenido */
+    border-radius: 12px;
+    box-shadow: 0 8px 12px rgba(0,0,0,0.3);
+}
+
+
+header {
+    background-color: #5C4033; /* Marrón antiguo oscuro */
+    color: #FFD700; /* Dorado tipo "tesoro" */
+    text-align: center;
+    padding: 20px;
+    font-family: 'Cinzel', serif;
+    font-size: 32px;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    border-bottom: 3px solid #8B4513;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: #8B5A2B; /* Marrón cuero para el menú */
+    padding: 10px 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+nav button {
+    background-color: #8B5A2B;
+    color: #f0e6d2;
+    border: 2px solid #5C4033;
+    margin: 0 10px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    font-family: 'Cinzel', serif;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+nav button:hover {
+    background-color: #a0522d; /* Marrón más brillante */
+    transform: scale(1.05);
+}
+.controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.controls select, .controls input, .controls button {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.controls button {
+   
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button {
+    background-color: #8B5A2B !important; /* Marrón cuero */
+    color: #f0e6d2 !important; /* Beige viejo */
+    border: 2px solid #5C4033 !important;
+    padding: 12px 24px ;
+    margin: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 6px 8px rgba(0,0,0,0.4);
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #a0522d; /* Marrón más brillante */
+    transform: scale(1.05);
+}
+
+#canvas-container {
+    width: 100%;
+    height: 500px;
+    background-color: #000;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    background-color: #5C4033; /* Marrón oscuro, piedra vieja */
+    padding: 15px 0;
+    box-shadow: 0 -4px 8px rgba(0,0,0,0.3); /* Sombra hacia arriba */
+    border-top: 2px solid #8B4513; /* Línea envejecida arriba */
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 999; /* Asegurarse que esté encima de todo */
+}
+
+.action-buttons button {
+    background-color: #8B5A2B; /* Marrón cuero igual que los de arriba */
+    color: #f0e6d2; /* Beige gastado */
+    border: 2px solid #5C4033;
+    margin: 0 10px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Cinzel', serif; /* Fuente aventurera */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.action-buttons button:hover {
+    background-color: #a0522d; /* Marrón más iluminado */
+    transform: scale(1.05); /* Ligeramente agrandado */
+    box-shadow: 0 6px 10px rgba(0,0,0,0.4);
+}

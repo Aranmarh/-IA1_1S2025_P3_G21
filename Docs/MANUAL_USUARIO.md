@@ -83,14 +83,6 @@ Haz clic en **“Reiniciar”** para volver al punto de inicio y probar otro alg
 
 ---
 
-## ℹ Consejos útiles
-
-- Usa archivos `.json` simples para probar los algoritmos.
-- El robot tiene animaciones distintas al llegar al destino.
-- Puedes agregar nuevos algoritmos si amplías el archivo `algoritmos.js`.
-
----
-
 ##  Créditos
 
 Proyecto desarrollado por estudiantes del curso **IA1 G21**:

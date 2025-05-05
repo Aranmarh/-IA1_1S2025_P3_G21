@@ -1,207 +1,53 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inicio - Laberinto 3D</title>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- Cargamos SweetAlert2 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MazeBot - 3D Maze Solver</title>
+    <link rel="stylesheet" href="./assets/css/laberinto.css">
+    <!-- Three.js and related libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"></script>
 
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background-image: url('https://images.alphacoders.com/691/thumb-1920-691531.jpg');
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* Header */
-    header {
-      background: rgba(0, 0, 0, 0.5);
-      padding: 15px 30px;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      gap: 10px;
-    }
-
-    header button {
-      background-color: transparent;
-      color: white;
-      border: 2px solid white;
-      padding: 8px 20px;
-      font-size: 16px;
-      border-radius: 20px;
-      cursor: pointer;
-      transition: background-color 0.3s, color 0.3s;
-    }
-
-    header button:hover {
-      background-color: white;
-      color: #004d40;
-    }
-
-    /* Contenido principal */
-    main {
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: white;
-      text-shadow: 1px 1px 3px black;
-    }
-
-    h1 {
-      font-size: 50px;
-      margin: 0;
-    }
-
-    h2 {
-      font-size: 30px;
-      margin: 10px 0 40px 0;
-    }
-
-    .botonInicio {
-      background-color: #00bfa5;
-      color: white;
-      border: none;
-      padding: 20px 50px;
-      font-size: 28px;
-      font-weight: bold;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: background-color 0.3s, transform 0.2s;
-    }
-
-    html {
-    overflow-y: scroll; /* Fuerza siempre mostrar barra de desplazamiento vertical */
-  }
-
-    .botonInicio:hover {
-      background-color: #009688;
-      transform: scale(1.1);
-    }
-  </style>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
+    
+    <!-- Application scripts -->
+    <script src="./assets/scripts/algoritmos.js"></script>
+    <script src="./assets/scripts/robot.js"></script>
+    <script src="./assets/scripts/index.js"></script>
+   </body>
 </head>
-
 <body>
 
-  <!-- Header -->
-  <header>
-    <button onclick="acercaDe()">Acerca de</button>
-    <button onclick="loginAdmin()">Admin</button>
+    <header>
+      <h3>MazeBot - LABERINTO 3D</h3> 
+      <p>IA1 G21</p>
   </header>
 
-  <!-- Contenido principal -->
-  <main>
-    <h1>LABERINTO</h1>
-    <h2>IA1 G16</h2>
-    <button class="botonInicio" onclick="irLaberinto()">Iniciar</button>
-  </main>
-
-  <script>
-    function irLaberinto() {
-      window.location.href = './client/index.html';
-    }
-
-    function acercaDe() {
-        Swal.fire({
-            title: 'Acerca de',
-            html: `
-            <style>
-                .tabla-acerca {
-                width: 100%;
-                border-collapse: collapse;
-                margin-top: 15px;
-                font-family: Arial, sans-serif;
-                }
-                .tabla-acerca th, .tabla-acerca td {
-                border: 1px solid #ccc;
-                padding: 8px 12px;
-                text-align: center;
-                }
-                .tabla-acerca th {
-                background-color: #00bfa5;
-                color: white;
-                }
-                .tabla-acerca tr:nth-child(even) {
-                background-color: #f2f2f2;
-                }
-            </style>
-
-            <table class="tabla-acerca">
-                <thead>
-                <tr>
-                    <th>Carnet</th>
-                    <th>Nombre</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>201408507</td>
-                    <td>Jose Martinez</td>
-                </tr>
-                <tr>
-                    <td>202002940</td>
-                    <td>Sebastian Godoy</td>
-                </tr>
-                <tr>
-                    <td>201019694</td>
-                    <td>Henderson Baten</td>
-                </tr>
-                </tbody>
-            </table>
-            `,
-            confirmButtonText: 'Cerrar',
-            width: '600px',
-            padding: '20px',
-            background: '#f4f4f9',
-            scrollbarPadding: false
-        });
-}
+  <nav>
+    <button id="cargar">CARGAR ARCHIVO</button>
+    <button id="home">HOME</button>
+  </nav>
+    <div class="container">
+      
 
 
-    function loginAdmin() {
-        Swal.fire({
-            title: 'Inicio de Sesión',
-            html:
-            '<input id="usuario" class="swal2-input" placeholder="Usuario">' +
-            '<input id="password" type="password" class="swal2-input" placeholder="Contraseña">',
-            confirmButtonText: 'Ingresar',
-            focusConfirm: false,
-            scrollbarPadding: false, // Para que el fondo no se mueva
-            preConfirm: () => {
-            const usuario = document.getElementById('usuario').value;
-            const password = document.getElementById('password').value;
+       <div class="title" style="text-align: center; padding-bottom: 50px;">
+           
+          
+        </div>
+        
+        <div id="canvas-container"></div>
+        
 
-            if (usuario === 'ia1' && password === '2025') {
-                Swal.fire({
-                title: '¡Bienvenido!',
-                text: 'Redirigiendo al panel de administrador...',
-                icon: 'success',
-                scrollbarPadding: false,
-                timer: 1500, // tiempo antes de redirigir
-                showConfirmButton: false
-                }).then(() => {
-                window.location.href = './admin/index.html'; // Redirige a admin.html
-                });
-            } else {
-                Swal.fire({
-                title: 'Error',
-                text: 'Usuario o contraseña incorrectos.',
-                icon: 'error',
-                scrollbarPadding: false
-                });
-            }
-            }
-        });
-    }
-
-  </script>
-
-</body>
+    </div>
+    <div class="action-buttons">
+      <button id="bfs">BFS</button>
+      <button id="dfs">DFS</button>
+      <button id="a">A * </button>
+      <button id="reset-btn">Reiniciar</button>
+  </div>
+ 
 </html>

@@ -1,5 +1,5 @@
 
-# 📘 Manual Técnico - MazeBot 3D
+# Manual Técnico - MazeBot 3D
 
 ## Descripción General
 
@@ -43,27 +43,10 @@ MazeBot 3D es una aplicación web educativa que permite al usuario visualizar la
 
 ## Diagrama de Flujo del Sistema
 
-```
-[Inicio]
-   ↓
-[Cargar archivo JSON]
-   ↓
-[Validar estructura JSON]
-   ↓
-¿Estructura válida?
-  ↓     ↓
-Sí      No
-↓        ↓
-[Renderizar laberinto 3D]   [Mostrar error]
-   ↓
-[Seleccionar algoritmo]
-   ↓
-[Ejecutar algoritmo]
-   ↓
-[Mostrar resultados y animación]
-   ↓
-[Reiniciar o finalizar]
-```
+## 🔄 Diagrama de Flujo del Sistema
+
+![Diagrama de Flujo](./Docs/flujo.png)
+
 
 ---
 
@@ -80,7 +63,7 @@ Sí      No
 
 ---
 
-## Justificación de los Algoritmos
+## Justificación y Descripción de los Algoritmos
 
 ### 🔹 BFS (Breadth-First Search)
 **Justificación:**  
@@ -110,12 +93,12 @@ A* fue incorporado por ser un algoritmo heurístico que balancea entre exploraci
 - Balance ideal entre eficiencia y calidad del camino.
 - Es el algoritmo más inteligente entre los tres para encontrar la mejor ruta en menos tiempo.
 
-### ✅ Elección de algoritmos:
+### Elección de algoritmos:
 Se eligieron estos tres algoritmos por su popularidad en IA y porque permiten comparar visualmente sus comportamientos. Además, ofrecen un equilibrio entre exploración total, profundidad y uso de heurística.
 
 ---
 
-## 🧪 Validación de Archivos JSON
+## Validación de Archivos JSON
 
 Antes de renderizar el laberinto, se valida que:
 - `ancho` y `alto` sean enteros mayores que 0.

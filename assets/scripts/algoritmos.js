@@ -1,9 +1,16 @@
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
 class DFS {
-    constructor(maze) {
+    constructor(maze, renderer) {
         this.maze = maze;
+        this.renderer = renderer;
     }
+
     
-    solve() {
+    async  solve() {
         const startX = this.maze.start[0];
         const startY = this.maze.start[1];
         const endX = this.maze.end[0];
@@ -21,6 +28,9 @@ class DFS {
         while (stack.length > 0) {
             const current = stack.pop();
             nodesExplored++;
+            this.renderer.highlightCell(current.x, current.y, 0xFFD700);
+            this.renderer.renderNow();
+            await sleep(200); // <-- aquí espera 1 segundo después de renderizar
             
             // Check if we've reached the goal
             if (current.x === endX && current.y === endY) {
@@ -57,11 +67,12 @@ class DFS {
 
 
 class BFS {
-    constructor(maze) {
+    constructor(maze, renderer) {
         this.maze = maze;
+        this.renderer = renderer;
     }
     
-    solve() {
+    async solve() {
         const startX = this.maze.start[0];
         const startY = this.maze.start[1];
         const endX = this.maze.end[0];
@@ -79,6 +90,10 @@ class BFS {
         while (queue.length > 0) {
             const current = queue.shift();
             nodesExplored++;
+            this.renderer.highlightCell(current.x, current.y, 0xFFD700);
+            this.renderer.renderNow();
+            await sleep(200); // <-- aquí espera 1 segundo después de renderizar
+            
             
             // Check if we've reached the goal
             if (current.x === endX && current.y === endY) {
@@ -114,8 +129,9 @@ class BFS {
 }
 
 class AStar {
-    constructor(maze) {
+    constructor(maze, renderer) {
         this.maze = maze;
+        this.renderer = renderer;
     }
     
     // Heuristic function (Manhattan distance)
@@ -123,7 +139,7 @@ class AStar {
         return Math.abs(x - endX) + Math.abs(y - endY);
     }
     
-    solve() {
+    async solve() {
         const startX = this.maze.start[0];
         const startY = this.maze.start[1];
         const endX = this.maze.end[0];
@@ -149,6 +165,10 @@ class AStar {
             
             const current = openSet.shift();
             nodesExplored++;
+            this.renderer.highlightCell(current.x, current.y, 0xFFD700);
+            this.renderer.renderNow();
+            await sleep(200); // <-- aquí espera 1 segundo después de renderizar
+            
             
             // Check if we've reached the goal
             if (current.x === endX && current.y === endY) {

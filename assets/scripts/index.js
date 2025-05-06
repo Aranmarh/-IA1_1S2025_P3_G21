@@ -105,26 +105,26 @@ class MazeBot {
         this.robot.setPosition(startPos.x, 0, startPos.z);
     }
     
-    solveMaze() {
+    async solveMaze() {
         if (!this.maze || !this.robot) return;
         
         let algorithm;
         switch (this.algorithm) {
             case 'bfs':
-                algorithm = new BFS(this.maze);
+                algorithm = new BFS(this.maze, this.renderer);
                 break;
             case 'dfs':
-                algorithm = new DFS(this.maze);
+                algorithm = new DFS(this.maze, this.renderer);
                 break;
             case 'astar':
-                algorithm = new AStar(this.maze);
+                algorithm = new AStar(this.maze, this.renderer);
                 break;
             default:
-                algorithm = new BFS(this.maze);
+                algorithm = new BFS(this.maze, this.renderer);
         }
         
         const startTime = performance.now();
-        const resultado = algorithm.solve();
+        const resultado = await algorithm.solve();
         const endTime = performance.now();
         
         if (resultado.path) {
@@ -166,11 +166,9 @@ class MazeBot {
         // Reset robot to start position
         const startPos = this.maze.getStartPosition();
         this.robot.setPosition(startPos.x, 0, startPos.z);
+        this.renderer.renderMaze(this.maze);
         
-        // Reset stats
-        document.getElementById('path-length').textContent = 'Path Length: 0';
-        document.getElementById('nodes-explored').textContent = 'Nodes Explored: 0';
-        document.getElementById('execution-time').textContent = 'Execution Time: 0ms';
+        
     }
 }
 
@@ -348,6 +346,24 @@ class Renderer {
         this.camera.updateProjectionMatrix();
         this.renderer.setSize(this.container.clientWidth, this.container.clientHeight);
     }
+
+
+    highlightCell(x, y, color) {
+        const tileGeometry = new THREE.PlaneGeometry(1, 1);
+        const tileMaterial = new THREE.MeshBasicMaterial({ color: color, side: THREE.DoubleSide });
+        const tile = new THREE.Mesh(tileGeometry, tileMaterial);
+    
+        tile.rotation.x = -Math.PI / 2;
+        tile.position.set(x, -0.49, y); // Justo encima del ground
+        tile.userData = { isMazeElement: true }; // Para limpiar si quieres luego
+        this.scene.add(tile);
+    }
+    
+    
+    renderNow() {
+        this.renderer.render(this.scene, this.camera);
+    }
+    
     
     // 🔵 Nueva función para crear una bandera ondeante
     crearBanderaOndeante(x, y, color) {

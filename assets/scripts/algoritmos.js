@@ -6,7 +6,7 @@ function sleep(ms) {
 class DFS {
     constructor(maze, renderer) {
         this.maze = maze;
-        this.renderer = renderer;
+        this.renderer = renderer; 
     }
 
     
